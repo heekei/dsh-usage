@@ -28,7 +28,7 @@ dsh plugin --profile web add github:heekei/dsh-usage
   (pi-ai 内置路由 kimi-coding / deepseek 按路由 id 识别)
 - 自定义查询: 每个供应商可在 设置→用量查询 配置 请求地址/方法/请求头/请求体/extractor, 支持 access token 与 access key/secret
 - 火山方舟: 需在 设置→用量查询 配置控制面 AccessKeyId / SecretAccessKey (签名 V4)
-- 数据接口: `GET /api/dsh-usage.json` (与 DSH 同源, 无需独立端口); 每 5 分钟刷新 (`DSH_USAGE_INTERVAL_MS`)
+- 数据接口: `GET /api/dsh-usage.json` (与 DSH 同源, 无需独立端口); 用量自动刷新, **间隔可在设置页配置** (默认 5 分钟)
 - 前端: 会话输入框下方用量读数条 (conversation.composer.dock 槽, 与会话统计同区的低调环境读数) + 设置页"用量查询"分节 (settings.section), 颜色分级: 剩余 ≥50% 绿 / ≥20% 橙 / <20% 红
 
 ## 安装（一行命令）
@@ -123,11 +123,17 @@ dsh-usage:
 - extractor 是本地 JS 表达式 (new Function), 仅你自己的配置可写, 与 cc-switch 自定义脚本同级信任.
 - 无 `dsh-usage` 分节时, 使用内置默认规格 (Kimi×2 / DeepSeek / GLM / 方舟×2).
 
+## 用量刷新间隔
+
+刷新间隔 (秒, 默认 300 = 5 分钟) 可在 **设置 → 用量查询 → 用量刷新间隔** 里配置, 保存即热加载生效, 无需重启。
+
+也支持写入配置文件 `settings.yaml` 的 `dsh-usage.interval` (秒), 或用环境变量 `DSH_USAGE_INTERVAL_MS` (毫秒) 兜底。优先级: 设置页/配置文件 > 环境变量 > 默认 300s。
+
 ## 环境变量
 | 变量 | 默认 | 说明 |
 | --- | --- | --- |
-| `DSH_USAGE_INTERVAL_MS` | `300000` (5min) | 用量刷新间隔 |
 | `DSH_HOME` | `~/.dsh` | DSH 配置目录 (settings.yaml / .credentials.yaml) |
+| `DSH_USAGE_INTERVAL_MS` | (已由设置页替代) | 兜底: 用量刷新间隔 (毫秒) |
 
 ## 开发
 源码位于 `lib/`:
