@@ -12,9 +12,27 @@ DSH 供应商用量查询插件. 后端查询各供应商的套餐/余额用量,
 - 数据接口: `GET /api/dsh-usage.json` (与 DSH 同源, 无需独立端口); 每 5 分钟刷新 (`DSH_USAGE_INTERVAL_MS`)
 - 前端: 会话输入框下方用量读数条 (conversation.composer.dock 槽, 与会话统计同区的低调环境读数) + 设置页"用量查询"分节 (settings.section), 颜色分级: 剩余 ≥50% 绿 / ≥20% 橙 / <20% 红
 
-## 安装
+## 安装（一行命令）
 
-> 适用于 DeepSeek Harness (DSH). 插件通过 `dsh` 元数据与 `exports["./client"]` 注入后端与前端的插槽.
+> 适用于 DeepSeek Harness (DSH). 插件是标准 **bundle 型插件**: 声明 `dsh.bundle.patch`,
+> 由 `dsh plugin` 安装进 profile 后自动启用, **无需手动配置** `cordis.patch.yml`.
+
+```bash
+dsh plugin --profile web add github:heekei/dsh-usage
+```
+
+或使用 git 地址:
+```bash
+dsh plugin --profile web add git+https://github.com/heekei/dsh-usage.git
+```
+
+安装完成后重启 DSH Web 生效.
+
+> 说明: `dsh plugin` 会把剩余参数转发给 profile 目录下的 pnpm 安装依赖, 并在安装后
+> 根据包的 `dsh.bundle.patch` 自动把 `dsh-usage` 加入 profile 层列表 (行为与 `dsh-git-sync` 一致).
+
+### 手动安装 (备用)
+适用于不想用 `dsh plugin` 命令的场景:
 
 1. 克隆/放置本仓库到 DSH 插件目录:
    ```

@@ -1,0 +1,7 @@
+# dsh-usage bundle patch: inserts the plugin row into the profile roster.
+# The node half (exports ".") runs in the host process (usage queries,
+# /api/dsh-usage.json), and the dsh.client declaration in package.json makes
+# the browser half (exports "./client") load in the web GUI.
+- insert:
+    - id: dsh-usage
+      name: 'dsh-usage'
