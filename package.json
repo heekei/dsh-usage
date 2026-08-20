@@ -1,0 +1,47 @@
+{
+  "name": "dsh-usage",
+  "version": "0.1.0",
+  "description": "DSH plugin: query provider quota/balance (Kimi / Zhipu GLM / DeepSeek / Volcengine / custom API) and show a live usage badge bar under the composer.",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "dsh",
+    "plugin",
+    "usage",
+    "quota",
+    "balance",
+    "deepseek",
+    "kimi",
+    "zhipu",
+    "volcengine"
+  ],
+  "author": "heekei",
+  "license": "MIT",
+  "homepage": "https://github.com/heekei/dsh-usage#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heekei/dsh-usage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/heekei/dsh-usage/issues"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web"
+    }
+  }
+}
