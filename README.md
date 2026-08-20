@@ -31,6 +31,17 @@ dsh plugin --profile web add github:heekei/dsh-usage
 - 数据接口: `GET /api/dsh-usage.json` (与 DSH 同源, 无需独立端口); 用量自动刷新, **间隔可在设置页配置** (默认 5 分钟)
 - 前端: 会话输入框下方用量读数条 (conversation.composer.dock 槽, 与会话统计同区的低调环境读数) + 设置页"用量查询"分节 (settings.section), 颜色分级: 剩余 ≥50% 绿 / ≥20% 橙 / <20% 红
 
+## 截图
+
+### 会话输入框下方用量读数条
+![用量读数条](assets/screenshots/usage-strip.png)
+
+### 设置页 — 用量查询配置
+![设置页用量查询](assets/screenshots/settings-usage.png)
+
+### 模型选择 — 带用量提示
+![模型选择用量](assets/screenshots/model-selector.png)
+
 ## 安装（一行命令）
 
 > 适用于 DeepSeek Harness (DSH). 插件是标准 **bundle 型插件**: 声明 `dsh.bundle.patch`,
