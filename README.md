@@ -4,6 +4,25 @@ DSH 供应商用量查询插件. 后端查询各供应商的套餐/余额用量,
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+
+**dsh-usage** 是 DeepSeek Harness (DSH) 的供应商用量查询插件。它实时查询各 LLM 供应商的
+套餐/余额用量, 并在会话输入框下方显示一条低调的用量读数条, 让你**一眼看清当前还能用多少**。
+
+- 🔌 **零配置自动识别**: 按 vendor base URL 自动识别 Kimi / 智谱 / DeepSeek / 火山方舟, 新增同类供应商无需任何配置;
+- ⚙️ **自定义查询**: 支持中转站/自建服务, 可配置 url / method / headers / body / extractor, 兼容 access token 与 access key/secret;
+- 🎨 **会话区环境读数**: 颜色分级 (剩余 ≥50% 绿 / ≥20% 橙 / <20% 红), 输入框下方与会话统计同区显示;
+- 📊 **设置页配置**: ⚙️ 设置 → “用量查询” 分节逐供应商配置, 保存即热加载生效.
+
+## 快速开始
+
+安装仅需一条命令 (见下方详细安装):
+
+```bash
+dsh plugin --profile web add github:heekei/dsh-usage
+```
+
+重启 DSH Web 后, 打开任意会话即可看到输入框下方的用量读数条.
+
 ## 功能
 - **自动推断**: 按供应商 base URL 自动识别 Kimi / 智谱 / DeepSeek / 火山方舟, 新增同类供应商**零配置**即有用量查询
   (pi-ai 内置路由 kimi-coding / deepseek 按路由 id 识别)
